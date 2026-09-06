@@ -2,4 +2,4 @@
 
 ## System Architecture
 
-![High-Level System Architecture](./architecture.png)
+![High-Level System Architecture](./Architecture%20.drawio.png)

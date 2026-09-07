@@ -1,4 +1,4 @@
-# Digital-Minds-
+# Digital-Minds
 # Group Members
 -Tendai Mtakiwa 
 -Tasnim Maulidi 

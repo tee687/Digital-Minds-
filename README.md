@@ -1,4 +1,14 @@
 # Digital-Minds-
+# Group Members
+-Tendai Mtakiwa 
+-Tasnim Maulidi 
+-Asiegbunam Chidera 
+
+
+
+
+
+
 
 ## System Architecture
 

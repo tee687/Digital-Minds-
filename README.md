@@ -4,6 +4,11 @@
 -Tasnim Maulidi 
 -Asiegbunam Chidera 
 
+Team Participation Sheet
+
+https://docs.google.com/spreadsheets/d/1Ua0rSOdYeHXIuUIMnmSGyWzgp8XwacqBM6PwG9KZom0/edit?usp=sharing
+
+
  Project Board
 Our Scrum board: [https://trello.com/invite/b/6a9e09ca5e9858c548a806a0/ATTI21ee3181734795623416aba49912382129EAE12F/scrum-board-digital-minds]
 

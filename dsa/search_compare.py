@@ -1,7 +1,7 @@
 import json
 import time
 
-with open("../API/transactions.json") as f:
+with open("../api/transactions.json") as f:
     transactions = json.load(f)
 
 lookup = {t["id"]: t for t in transactions}

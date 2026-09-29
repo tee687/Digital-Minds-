@@ -1,3 +1,4 @@
+```python
 import json
 import base64
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -32,10 +33,7 @@ class TransactionHandler(BaseHTTPRequestHandler):
 
         try:
             encoded_credentials = auth_header.split(" ")[1]
-            credentials = base64.b64decode(
-                encoded_credentials
-            ).decode("utf-8")
-
+            credentials = base64.b64decode(encoded_credentials).decode("utf-8")
             username, password = credentials.split(":", 1)
 
             return username == USERNAME and password == PASSWORD
@@ -71,14 +69,8 @@ class TransactionHandler(BaseHTTPRequestHandler):
         ).encode("utf-8")
 
         self.send_response(status_code)
-        self.send_header(
-            "Content-Type",
-            "application/json"
-        )
-        self.send_header(
-            "Content-Length",
-            str(len(response))
-        )
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(response)))
         self.end_headers()
 
         self.wfile.write(response)
@@ -113,12 +105,7 @@ class TransactionHandler(BaseHTTPRequestHandler):
             return
 
         if self.path == "/transactions":
-
-            self.send_json(
-                200,
-                transactions
-            )
-
+            self.send_json(200, transactions)
             return
 
         transaction_id = self.get_transaction_id()
@@ -128,28 +115,18 @@ class TransactionHandler(BaseHTTPRequestHandler):
             for transaction in transactions:
 
                 if transaction["id"] == transaction_id:
-
-                    self.send_json(
-                        200,
-                        transaction
-                    )
-
+                    self.send_json(200, transaction)
                     return
 
             self.send_json(
                 404,
-                {
-                    "error": "Transaction not found"
-                }
+                {"error": "Transaction not found"}
             )
-
             return
 
         self.send_json(
             404,
-            {
-                "error": "Endpoint not found"
-            }
+            {"error": "Endpoint not found"}
         )
 
     def do_POST(self):
@@ -158,27 +135,19 @@ class TransactionHandler(BaseHTTPRequestHandler):
             return
 
         if self.path != "/transactions":
-
             self.send_json(
                 404,
-                {
-                    "error": "Endpoint not found"
-                }
+                {"error": "Endpoint not found"}
             )
-
             return
 
         data = self.read_request_body()
 
         if not data:
-
             self.send_json(
                 400,
-                {
-                    "error": "Invalid JSON"
-                }
+                {"error": "Invalid JSON"}
             )
-
             return
 
         required_fields = [
@@ -192,14 +161,10 @@ class TransactionHandler(BaseHTTPRequestHandler):
         for field in required_fields:
 
             if field not in data:
-
                 self.send_json(
                     400,
-                    {
-                        "error": f"Missing field: {field}"
-                    }
+                    {"error": f"Missing field: {field}"}
                 )
-
                 return
 
         new_id = max(
@@ -233,27 +198,19 @@ class TransactionHandler(BaseHTTPRequestHandler):
         transaction_id = self.get_transaction_id()
 
         if transaction_id is None:
-
             self.send_json(
                 400,
-                {
-                    "error": "Invalid transaction ID"
-                }
+                {"error": "Invalid transaction ID"}
             )
-
             return
 
         data = self.read_request_body()
 
         if not data:
-
             self.send_json(
                 400,
-                {
-                    "error": "Invalid JSON"
-                }
+                {"error": "Invalid JSON"}
             )
-
             return
 
         for index, transaction in enumerate(transactions):
@@ -292,14 +249,11 @@ class TransactionHandler(BaseHTTPRequestHandler):
                     200,
                     updated_transaction
                 )
-
                 return
 
         self.send_json(
             404,
-            {
-                "error": "Transaction not found"
-            }
+            {"error": "Transaction not found"}
         )
 
     def do_DELETE(self):
@@ -310,14 +264,10 @@ class TransactionHandler(BaseHTTPRequestHandler):
         transaction_id = self.get_transaction_id()
 
         if transaction_id is None:
-
             self.send_json(
                 400,
-                {
-                    "error": "Invalid transaction ID"
-                }
+                {"error": "Invalid transaction ID"}
             )
-
             return
 
         for index, transaction in enumerate(transactions):
@@ -335,14 +285,11 @@ class TransactionHandler(BaseHTTPRequestHandler):
                         "transaction": deleted_transaction
                     }
                 )
-
                 return
 
         self.send_json(
             404,
-            {
-                "error": "Transaction not found"
-            }
+            {"error": "Transaction not found"}
         )
 
 
@@ -353,7 +300,9 @@ if __name__ == "__main__":
         TransactionHandler
     )
 
-    print("MoMo REST API running on http://localhost:8000")
+    print(
+        "MoMo REST API running on http://localhost:8000"
+    )
 
     server.serve_forever()
 ```
